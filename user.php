@@ -1,4 +1,5 @@
 <?php session_start(); //checks for user logged in before accessing page
+//(git test)
 if(!isset($_SESSION['userID'])) { header("Location: login.php"); exit();}
 else {include_once "html/header.php";}
 ?>
