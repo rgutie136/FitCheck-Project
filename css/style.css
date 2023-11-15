@@ -1,0 +1,117 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+h1 {
+  color: #000000;
+  font-family: 'Verdana', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  margin: 0 0 24px;
+}
+.accForm {
+    margin:auto;
+    text-align:center;
+    background: #9dabbe;
+    border-radius: 16px;
+    padding: 32px 1px 16px 1px;
+    width:40%;
+}
+.homepage {
+  color: royalblue;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 56px;
+  margin: 0 0 24px;
+}
+p.success{
+    color: #0f0;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 20px;
+}
+
+p.error {
+    color: #f00;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 20px;
+}
+
+.topBar {
+  width: 100%;
+  height: auto;
+  background-color: #3b434a;
+  
+  overflow: auto;
+}
+
+.topBar a {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  display: center;
+  text-align: center;
+  background-color: #3f6483;
+  color: #ffffff;
+  font-weight: bold;
+  float: left;
+  padding: 12px;
+  font-size: 17px;
+}
+.topBar a:hover {
+    background-color: #75b2cc;
+    color: black;
+}
+.topBar .right {
+    float:right;
+}
+
+input {
+    width: 75%%;
+    padding: 10px;
+    margin: 5px 0 5px 0;
+    display: inline-block;
+    text-align:left;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+input:focus {
+  background-color: #e3e3e3;
+}
+
+
+.actbutton{
+    background-color:black;
+    color:white;
+    padding: 15px;
+    margin: 5px 0 5px 0;
+    text-decoration:none;
+    border-radius: 8px;
+}
+
+.viewlog{
+  background-color:black;
+  color:white;
+  padding:15px 25px;
+  text-decoration:none;
+}
+
+.return{
+  background-color:black;
+  color:white;
+  padding:15px 25px;
+  text-decoration:none;
+}
+
+.default{
+  background-color:black;
+  color:white;
+  padding:15px 25px;
+  text-decoration:none;
+}
+
