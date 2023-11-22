@@ -1,4 +1,4 @@
-<?php session_start(); include_once "html/header.php";?>
+<?php session_start(); include_once "html/header.php";?><body>
 <center>
 <h2>Account Sign Up</h2> 
 
@@ -13,9 +13,9 @@
         else if($_GET["error"] == "emailexists") {
             echo "<p class='error'>Email is already used. Try Another Email</p>";
         }
-    else if($_GET["error"] == "pwdnotmatch") {
-      echo "<p class='error'>Passwords do not match. Try Again.</p>";
-    }
+        else if($_GET["error"] == "pwdnotmatch") {
+            echo "<p class='error'>Passwords do not match. Try Again.</p>";
+        }
         else if($_GET["error"] == "stmtfail") {
             echo "<p class='success'>Something went wrong. Try again.</p>";
         }
@@ -63,8 +63,7 @@
         
 	   <input class="actbutton" type="submit" name="create" value="Create Account">
   </div>
-    <center><p>Already have an account? <a href="login.php">Log in</a></p></center>
-</form>
-
-
+    </form>
+<center><p>Already have an account? <a href="login.php">Log in</a></p></center>
+<br><br>
 <?php include_once "html/footer.php";?> 

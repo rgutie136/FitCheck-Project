@@ -1,4 +1,4 @@
-<?php session_start(); include_once "html/header.php";?>
+<?php session_start(); include_once "html/header.php";?><body>
 <center>
 <h2>Account Login</h2> 
 <?php
@@ -24,4 +24,5 @@
     
 </div></form> 
 <center><p>Creating a new account? <a href="signup.php">Sign Up</a></p></center>
+<br><br>
 <?php include_once "html/footer.php";?>

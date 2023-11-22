@@ -65,10 +65,11 @@
 			header("location: ../signup.php?error=stmtfail");
 			exit();
 		}
-		$hashedPwd = $pwd;//password_hash($pwd, PASSWORD_DEFAULT);
+		$hashedPwd = $pwd;
+        //hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 		
-		$sqlDOB = date("Y-m-d",strtotime($dob)) !== false;
-		mysqli_stmt_bind_param($stmt, "ssssssddd", $email, $hashedPwd, $fname, $lname, $dob, $gender, $weight, $height, $goal);
+		$sqlDOB = date("Y-m-d",strtotime($dob));
+		mysqli_stmt_bind_param($stmt, "ssssssddd", $email, $hashedPwd, $fname, $lname, $sqlDOB, $gender, $weight, $height, $goal);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
         header("location: ../signup.php?error=none");
@@ -95,7 +96,9 @@
       exit();
     }
     $pwdHashed = $emailExists["Password"];
-    $checkPwd = ($pwdHashed == $pwd); //password_verify($pwd, $pwdHashed);
+    
+    $checkPwd = ($pwdHashed == $pwd); //used for tuples
+    //$checkPwd = password_verify($pwd, $pwdHashed);
     if ($checkPwd === false) {
       header("location: ../login.php?error=wronglogin");
       exit();
@@ -124,3 +127,29 @@
       exit();
     }
   }
+function emptyInputActivity($uID, $wID, $tID, $date, $newWeight, $time) {
+    $result;
+    if (empty($uID)	|| empty($wID)	|| empty($tID)	|| 
+        empty($date)	|| empty($newWeight) ||
+        empty($time)) {
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
+function addActivity($conn, $uID, $wID, $tID, $date, $newWeight, $time, $notes) {
+    $sql = "INSERT INTO ActivityLog (UserID, WorkoutID, TrainerID, Date, newWeight, Duration, Notes) VALUES (?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../userLog.php?error=stmtfail");
+        exit();
+    }
+    $sqlDate = date("Y-m-d",strtotime($date));
+    mysqli_stmt_bind_param($stmt, "iiisdis", $uID, $wID, $tID, $date, $newWeight, $time, $notes);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../userLog.php?error=none");
+    exit();
+}

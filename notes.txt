@@ -1,4 +1,3 @@
-test user login
-
-johnsmith@gmail.com
+==test user login==
+admintest@gmail.com
 Passw0rd
