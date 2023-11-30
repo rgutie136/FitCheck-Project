@@ -6,7 +6,7 @@ else {include_once "html/header.php";}
     $trainers = mysqli_query($conn,"SELECT * FROM Trainer");
 ?><body>
 
-<center><h2> Activity Log</h2>
+<center><h2>Activity Log</h2>
     <?php
         if(isset($_GET["error"])){
             if($_GET["error"] == "emptyinput") {
@@ -46,10 +46,10 @@ else {include_once "html/header.php";}
             </select><br>
         <br>
         <label for = "newA">Recorded Weight (kg)</label><br>
-            <input type="number"  name="newA"><br>
+            <input type="number"  name="newA" placeholder="Recorded Weight.."><br>
         <br>
         <label for = "timeA">Duration (minutes)</label><br>
-            <input type="number" name="timeA"><br>
+            <input type="number" name="timeA" placeholder="Duration..."><br>
         <br>
         <label for = "noteA">Notes (Optional)</label><br>
             <textarea type="text" name="noteA" rows=9 cols=50></textarea><br>

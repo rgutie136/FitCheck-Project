@@ -6,9 +6,13 @@ else {include_once "html/header.php";}
     $displayLog = mysqli_query($conn,"SELECT * FROM ActivityLog WHERE UserID = '$user'");
     $workouts = mysqli_query($conn,"SELECT * FROM Workout");
     $trainers = mysqli_query($conn,"SELECT * FROM Trainer");
+    $bmi = ($_SESSION["userWeight"] / pow(($_SESSION['userHeight']/100), 2));
+    $numBMI = number_format((float)$bmi, 2, '.', '');
+    
 ?><body>
 <center>
-<h1 style="color:black">Welcome, <?php echo $_SESSION["userFName"];?> <?php echo $_SESSION["userLName"];?>!</h1></center>
+<h1 style="color:black">
+    Welcome, <?php echo $_SESSION["userFName"];?> <?php echo $_SESSION["userLName"];?>!</h1></center>
 <h2>Your Profile Info</h2>
 <table>
     <tr>
@@ -18,6 +22,7 @@ else {include_once "html/header.php";}
         <th>Height (cm)</th>
         <th>Weight (kg)</th>
         <th>Weight Goal (kg)</th>
+        <th>BMI</th>
     </tr>
     <tr>
         <td><?php echo $_SESSION["userEmail"];?></td>
@@ -26,6 +31,8 @@ else {include_once "html/header.php";}
         <td><?php echo $_SESSION["userHeight"];?></td>
         <td><?php echo $_SESSION["userWeight"];?></td>
         <td><?php echo $_SESSION["userGoal"];?></td>
+        <td><?php echo $numBMI;?></td>
+    </tr>
     </tr>
 </table>
 <br>

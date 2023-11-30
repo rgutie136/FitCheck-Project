@@ -66,14 +66,18 @@
 			exit();
 		}
 		$hashedPwd = $pwd;
-        //hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+        //$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+        $weight = abs($weight);
+        $height = abs($height);
+        $goal = abs($goal);
 		
 		$sqlDOB = date("Y-m-d",strtotime($dob));
 		mysqli_stmt_bind_param($stmt, "ssssssddd", $email, $hashedPwd, $fname, $lname, $sqlDOB, $gender, $weight, $height, $goal);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
         header("location: ../signup.php?error=none");
-        loginUser($conn, $email, $pwd);
+        loginUser($conn, $email, $hashedPwd);
         exit();
 	}
 
@@ -99,32 +103,26 @@
     
     $checkPwd = ($pwdHashed == $pwd); //used for tuples
     //$checkPwd = password_verify($pwd, $pwdHashed);
-    if ($checkPwd === false) {
-      header("location: ../login.php?error=wronglogin");
-      exit();
-    }
-    else if($checkPwd === true) {
-      // use $_SESSION for getting userID and data 
-      session_start();
+      
+    if ($checkPwd === true) {
+        // use $_SESSION for getting userID and data 
+        session_start();
         $_SESSION["userID"] = $emailExists["UserID"];
-
         $_SESSION["userEmail"] = $emailExists["Email"];
-
         $_SESSION["userFName"] = $emailExists["FName"];
-
         $_SESSION["userLName"] = $emailExists["LName"];
-
         $_SESSION["userDOB"] = $emailExists["Birth"];
-
         $_SESSION["userWeight"] = $emailExists["Weight"];
-
         $_SESSION["userHeight"] = $emailExists["Height"];
-
         $_SESSION["userGender"] = $emailExists["Gender"];
-
         $_SESSION["userGoal"] = $emailExists["WeightGoal"];
-      header("Location: ../user.php");
-      exit();
+        header("Location: ../user.php");
+        exit();
+    }
+    else {
+        header("location: ../login.php?error=wronglogin");
+        exit();
+      
     }
   }
 function emptyInputActivity($uID, $wID, $tID, $date, $newWeight, $time) {
@@ -146,7 +144,11 @@ function addActivity($conn, $uID, $wID, $tID, $date, $newWeight, $time, $notes) 
         header("location: ../userLog.php?error=stmtfail");
         exit();
     }
+
     $sqlDate = date("Y-m-d",strtotime($date));
+    $newWeight = abs($newWeight);
+    $time = abs($time);
+    
     mysqli_stmt_bind_param($stmt, "iiisdis", $uID, $wID, $tID, $date, $newWeight, $time, $notes);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
