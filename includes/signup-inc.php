@@ -1,11 +1,11 @@
 <?php
-if(isset($_POST["create"])) {
-	
+if (isset($_POST["create"])) {
+
 	if (empty($_POST["gender"])) {
 		header("Location: ../signup.php?error=emptyinput");
 		exit();
-	  }
-	
+	}
+
 	$email = $_POST['email'];
 	$pwd = $_POST['pwd'];
 	$pwdRep = $_POST['pwdRepeat'];
@@ -21,27 +21,25 @@ if(isset($_POST["create"])) {
 	require_once "functions.php";
 
 	//error handlers
-	if(emptyInputSignup($email, $pwd, $pwdRep, $fname, $lname, $dob, $gender, $weight, $height, $goal) !== false ) {
+	if (emptyInputSignup($email, $pwd, $pwdRep, $fname, $lname, $dob, $gender, $weight, $height, $goal) !== false) {
 		header("Location: ../signup.php?error=emptyinput");
 		exit();
 	}
-	if(invalidEmail($email) !== false) {
+	if (invalidEmail($email) !== false) {
 		header("Location: ../signup.php?error=invalidemail");
 		exit();
 	}
-	if(pwdMatch($pwd, $pwdRep) !== false) {
+	if (pwdMatch($pwd, $pwdRep) !== false) {
 		header("Location: ../signup.php?error=pwdnotmatch");
 		exit();
 	}
-	if(emailExists($conn, $email) !== false) {
+	if (emailExists($conn, $email) !== false) {
 		header("Location: ../signup.php?error=emailexists");
 		exit();
-	}	
+	}
 
 	createUser($conn, $email, $pwd, $fname, $lname, $dob, $gender, $weight, $height, $goal);
-  
-}
-else {
+} else {
 	header("Location: ../signup.php");
 	exit();
-} 
+}

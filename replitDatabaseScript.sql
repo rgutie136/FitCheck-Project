@@ -3,7 +3,7 @@ USE sql5660472;
 CREATE TABLE Users (
     UserID INT PRIMARY KEY AUTO_INCREMENT,
     Email VARCHAR(50) NOT NULL,
-    Password VARCHAR(50) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
     FName VARCHAR(50) NOT NULL,
     LName VARCHAR(50) NOT NULL,
     Birth DATE NOT NULL,
@@ -51,16 +51,27 @@ CREATE TABLE ActivityLog (
 
 # User: UserID(PK), Email, Password, FName, LName,
 # Birth(YYYY-MM-DD), Gender, Weight(kg), Height(cm), WeightGoal(kg)
-INSERT INTO Users VALUES (23635935, "johnsmith@gmail.com", "Passw0rd", "John", "Smith", "1989-02-14", "M", 70, 165, 65);
-INSERT INTO Users VALUES (48576382, "emjohnson@gmail.com", "Journ33y",  "Emily", "Johnson", "1999-04-04", "F", 77, 178, 72);
-INSERT INTO Users VALUES (98765432, "mikebrown94@gmail.com", "BrownBear94",  "Michael", "Brown", "1994-07-29", "M", 66, 155, 64);
-INSERT INTO Users VALUES (12345678, "sarahdavis05@gmail.com", "Qwerty123",  "Sarah", "Davis", "2004-05-22", "F", 68, 170, 64);
-INSERT INTO Users VALUES (56789012, "wilsondave57@gmail.com", "F0rg0t10",  "David", "Wilson", "1997-11-30", "M", 63, 162, 58);
-INSERT INTO Users VALUES (34567890, "jesslee@gmail.com", "Jessica1",  "Jessica", "Lee", "2002-03-10", "F", 67, 185, 58);
-INSERT INTO Users VALUES (87654321, "chriswhite@gmail.com", "White1991",  "Christopher", "White", "1991-03-09", "M", 80, 160, 76);
-INSERT INTO Users VALUES (23454747, "jenclark12@gmail.com", "Lakers789",  "Jennifer", "Clark", "1988-12-05", "F", 92, 175, 88);
-INSERT INTO Users VALUES (34762345, "robmartinez74@gmail.com", "Martin3z", "Robert", "Martinez", "174-09-16", "M", 60, 168, 57);
-INSERT INTO Users VALUES (65432109, "rogriquezalicia@gmail.com", "F1tnesss", "Alicia", "Rodriguez", "1995-10-31", "F", 85, 180, 78);
+INSERT INTO Users VALUES (23635935, "johnsmith@gmail.com", "$2a$12$VlfJH3h1gd.7kfAPqKRxFe4RO4M2YSCgryfsfH9MjxdU4WrzeuuRu", "John", "Smith", "1989-02-14", "M", 70, 165, 65);
+# Passw0rd
+INSERT INTO Users VALUES (48576382, "emjohnson@gmail.com", "$2a$12$p9VJcNwcQckcaaWWQeeFAOGLt1lz8teapx4Ye12MnY41lsirp3Kl.",  "Emily", "Johnson", "1999-04-04", "F", 77, 178, 72);
+# Journ33y
+INSERT INTO Users VALUES (98765432, "mikebrown94@gmail.com", "$2a$12$SSx3oYOoxQX/ShmUiMh4POonOZlk7u/Cx9JdhoqC.Uoa2/Rp.fMWy",  "Michael", "Brown", "1994-07-29", "M", 66, 155, 64);
+# BrownBear94
+INSERT INTO Users VALUES (12345678, "sarahdavis05@gmail.com", "$2a$12$TKMZ9HK1NcxR5git1jZWBuqCZbLCDMSWzq0eyxEgKG.h1uKGGxvBK",  "Sarah", "Davis", "2004-05-22", "F", 68, 170, 64);
+# Qwerty123
+INSERT INTO Users VALUES (56789012, "wilsondave57@gmail.com", "$2a$12$EIOgoKlGcvrVLCjGaEaG8OM.IGdlBaBEx7/Z3my2AwBORURiS9WnO",  "David", "Wilson", "1997-11-30", "M", 63, 162, 58);
+# F0rg0t10
+INSERT INTO Users VALUES (34567890, "jesslee@gmail.com", "$2a$12$MHhxQUNhePa5jMEAC8lmP.joWykrDOIZH76QOcByMxaFdv9owkH8W",  "Jessica", "Lee", "2002-03-10", "F", 67, 185, 58);
+# Jessica1
+INSERT INTO Users VALUES (87654321, "chriswhite@gmail.com", "$2a$12$vc6mN/4KXvI4TMYzFPLlSOGYQNLmqviM9rWXrSVX0EbbE0iK/6Lju",  "Christopher", "White", "1991-03-09", "M", 80, 160, 76);
+# White1991
+INSERT INTO Users VALUES (23454747, "jenclark12@gmail.com", "$2a$12$0FhcUi5rJUD98g.1TAjggOgnSwca3ik1Vs/YAHDJCWes4Xb8ZfDaG",  "Jennifer", "Clark", "1988-12-05", "F", 92, 175, 88);
+# Lakers789
+INSERT INTO Users VALUES (34762345, "robmartinez74@gmail.com", "$2a$12$rAZRZA8ym/3LZm1gqLvDfektZdvk/sVTGPi4TJUxHzRh.vaDzanzi", "Robert", "Martinez", "174-09-16", "M", 60, 168, 57);
+# Martin3z
+INSERT INTO Users VALUES (65432109, "rogriquezalicia@gmail.com", "$2a$12$YMzUO7gC4/.3RpWvkoCjy.IgxM36SY6N0GYZ.yfClIE.5y.dkPlOm", "Alicia", "Rodriguez", "1995-10-31", "F", 85, 180, 78);
+# F1tnesss
+
 
 # Trainer - TrainerID, FName, LName, Type
 INSERT INTO Trainer VALUES (1, "No", "Trainer", "Default");
